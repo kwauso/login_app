@@ -25,4 +25,18 @@ def login():
 
 @app.route("/create_account", methods = ["GET", "POST"])
 def create_account():
+    if request.method == "POST":
+        name = request.form.get("name")
+        password = request.form.get("password")
+        password = hashlib.sha256(password.encode())
+        password = password.hexdigest()
+
+        user = User_db(
+            name = name,
+            password = password
+        )
+        db.session.add(user)
+        db.session.commit()
+
+        return render_template("/index.html")
     return render_template("create_account.html")
