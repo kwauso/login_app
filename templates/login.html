@@ -4,13 +4,23 @@
 
 <h1>LOGIN</h1>
 <p>Please login.</p>
+<P>If you don't have an account yet, click <a href="/create_account">here</a>.</P>
 
 <form action="/login" method="post">
-    <input autocomplete="off" autofocus name="name" placeholder="Login Name" type="text" required="required">
+    {% if LOGIN_NAME_FLAG == 0 %}
+        <p class = "error_message">{{error_message}}</p>
+        <input autocomplete="off" autofocus name="name" placeholder="Login Name" type="text" required="required">
+    {% else %}
+        <input autocomplete="off" autofocus name="password" placeholder="Password" type="text" required="required">
+    {% endif %}
     <br>
-    <input autocomplete="off" autofocus name="password" placeholder="Password" type="text" required="required">
-    <br>
-    <button type="submit">Login</button>
+    <button type="submit">
+        {% if LOGIN_NAME_FLAG == 0 %}
+        NEXT
+        {% else %}
+        LOGIN
+        {% endif %}
+    </button>
 </form>
 
 {% endblock %}
