@@ -50,8 +50,11 @@ def login():
                 return render_template("login.html", LOGIN_NAME_FLAG = LOGIN_NAME_FLAG, error_message = error_message)
             else:
                 LOGIN_NAME_FLAG = 1
-                return render_template("login.html", LOGIN_NAME_FLAG = LOGIN_NAME_FLAG, onetime_salt = onetime_salt)
-
+                break
+        password = request.form.get("password")
+        print(password)
+        return render_template("login.html", LOGIN_NAME_FLAG = LOGIN_NAME_FLAG, onetime_salt = onetime_salt)
+        
     return render_template("login.html", LOGIN_NAME_FLAG = LOGIN_NAME_FLAG)
 
 @app.route("/create_account", methods = ["GET", "POST"])

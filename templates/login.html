@@ -9,9 +9,9 @@
 <form action="/login" method="post">
     {% if LOGIN_NAME_FLAG == 0 %}
         <p class = "error_message">{{error_message}}</p>
-        <input autocomplete="off" autofocus name="name" placeholder="Login Name" type="text" required="required">
+        <input autocomplete="off" name="name" placeholder="Login Name" type="text" required="required">
     {% else %}
-        <input autocomplete="off" autofocus name="password" placeholder="Password" type="text" required="required">
+        <input autocomplete="off" name = "password" placeholder="Password" type="text" required="required">
     {% endif %}
     <br>
     <button type="submit">
